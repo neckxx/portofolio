@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>Raihan Ramadhani - Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  @keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
+  /* Animated background with subtle stars */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    background:
+      radial-gradient(2px 2px at 20% 10%, rgba(255,255,255,0.7), transparent),
+      radial-gradient(1.5px 1.5px at 40% 30%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(2px 2px at 70% 50%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1px 1px at 80% 80%, rgba(255,255,255,0.4), transparent);
+    animation: twinkle 4s linear infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% {opacity: 1;}
+    50% {opacity: 0.7;}
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  header h1 {
+    font-weight: 600;
+    font-size: 2.8rem;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 12px rgba(0,0,0,0.4);
+    margin-bottom: 0.2rem;
+  }
+
+  header h2 {
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: #ffe;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.3);
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    background: rgba(255 255 255 / 0.2);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  nav a:hover,
+  nav a:focus {
+    background: rgba(255 255 255 / 0.4);
+    transform: scale(1.05);
+    outline: none;
+  }
+
+  section {
+    margin-bottom: 3em;
+    background: rgba(255 255 255 / 0.1);
+    border-radius: 15px;
+    padding: 1.8rem 2rem;
+    box-shadow: 0 0 25px rgba(0,0,0,0.1);
+  }
+
+  section h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #fff6;
+    padding-bottom: 0.3rem;
+  }
+
+  /* About Me */
+  #about p {
+    font-weight: 300;
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+
+  /* Skills */
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .skills-list span {
+    background: rgba(255 255 255 / 0.3);
+    padding: 8px 14px;
+    border-radius: 25px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    user-select: none;
+  }
+
+  /* Asset */
+  .asset-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .asset-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255 255 255 / 0.15);
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: background 0.3s ease;
+  }
+
+  .asset-item:hover {
+    background: rgba(255 255 255 / 0.3);
+  }
+
+  .asset-icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+  }
+
+  .asset-content h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+  }
+  .asset-content p {
+    font-weight: 300;
+    font-size: 0.9rem;
+  }
+
+  /* Project */
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .project-item {
+    background: rgba(255 255 255 / 0.15);
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.13);
+    transition: transform 0.2s ease;
+    cursor: default;
+  }
+  .project-item:hover {
+    transform: scale(1.02);
+  }
+
+  .project-item h4 {
+    margin-bottom: 0.5rem;
+  }
+  .project-item p {
+    font-weight: 300;
+    font-size: 0.95rem;
+  }
+
+  /* Contact */
+  #contact .contact-list {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255 255 255 / 0.3);
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.25);
+    transition: background 0.3s ease, transform 0.2s ease;
+    color: #111;
+  }
+  .contact-item:hover {
+    background: #fff;
+    transform: scale(1.1);
+  }
+  .contact-item svg {
+    width: 22px;
+    height: 22px;
+    fill: #111;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    margin-top: 3rem;
+    font-weight: 300;
+    font-size: 0.9rem;
+    color: #eee;
+  }
+
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .container {
+      padding: 1.5rem 1rem 3rem;
+      max-width: 100%;
+    }
+
+    nav {
+      gap: 12px;
+    }
+  }
+
+  @media (max-width: 350px) {
+    html, body {
+      overflow-y: auto;
+    }
+    header h1 {
+      font-size: 2rem;
+    }
+
+    section h3 {
+      font-size: 1.5rem;
+    }
+
+    .asset-item, .project-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .asset-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .contact-item {
+      font-size: 0.9rem;
+      padding: 10px 15px;
+      gap: 8px;
+    }
+    .contact-item svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <h1>Raihan Ramadhani</h1>
+    </header>
+
+    <nav aria-label="Primary">
+      <a href="#about" tabindex="1">About Me</a>
+      <a href="#skills" tabindex="2">Skills</a>
+      <a href="#asset" tabindex="3">Asset</a>
+      <a href="#project" tabindex="4">Project</a>
+      <a href="#contact" tabindex="5">Contact</a>
+    </nav>
+
+    <section id="about" tabindex="0" aria-label="About Me">
+      <h3>About Me</h3>
+      <p>Halo! Saya Raihan Ramadhani, seorang programmer yang hobi ngoding dan juga tertarik di dunia investasi. Sehari-hari saya suka bikin website, ngembangin sistem di game (terutama SA-MP), atau ngulik bot Discord. Intinya, saya senang membuat sesuatu yang berguna lewat baris-baris kode.</p>
+      <p>Selain dunia pemrograman, saya juga aktif belajar soal keuangan dan investasi. Mulai dari baca grafik, riset pasar, sampai nyoba strategi investasi jangka panjang — semua jadi bagian dari proses belajar saya.</p>
+      <p>Bagi saya, teknologi dan investasi punya satu kesamaan: sama-sama butuh logika, kesabaran, dan konsistensi. Dan saya menikmati perjalanan di keduanya.</p>
+    </section>
+
+    <section id="skills" tabindex="0" aria-label="Skills">
+      <h3>Skills</h3>
+      <div class="skills-list" aria-label="List of programming skills">
+        <span>Html / Css</span>
+        <span>JavaScript</span>
+        <span>Python</span>
+        <span>React</span>
+        <span>Next.js</span>
+        <span>Node.js</span>
+        <span>Pawno</span>
+        <span>SQL</span>
+        <span>Git & GitHub</span>
+        <span>Blockchain / Crypto</span>
+      </div>
+    </section>
+
+    <section id="asset" tabindex="0" aria-label="Assets">
+      <h3>Asset</h3>
+      <div class="asset-list">
+        <div class="asset-item" role="article" aria-label="Bitcoin asset">
+          <svg class="asset-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="16" fill="#f7931a"/>
+            <path fill="#ffffff" d="M17.153 13.298c.327-1.746-1.07-2.688-2.894-3.312l.591-2.369-1.44-.36-.575 2.308c-.379-.095-.768-.184-1.152-.273l.579-2.324-1.44-.36-.59 2.368c-.313-.072-.623-.143-.925-.217l.001-.006-1.984-.495-.384 1.536s1.07.246 1.046.26c.583.146.688.534.671.84l-.673 2.701c.04.01.092.025.15.048l-.153-.038-.942 3.783c-.071.177-.25.444-.654.343.014.021-1.046-.26-1.046-.26l-.717 1.65 1.872.467c.348.087.69.177 1.025.262l-.598 2.395 1.44.36.59-2.368c.39.106.769.204 1.14.296l-.588 2.359 1.44.36.598-2.392c2.457.465 4.306.278 5.078-1.946.625-1.783-.031-2.809-1.32-3.48.939-.216 1.647-.832 1.836-2.106zm-3.285 4.591c-.445 1.783-3.456.82-4.428.578l.791-3.17c.972.243 4.106.724 3.637 2.592zm.447-4.61c-.406 1.626-2.912.799-3.722.596l.716-2.869c.81.203 3.429.58 3.006 2.273z"/>
+            </svg>
+           <div class="asset-content">
+            <h4>Bitcoin</h4>
+            <p>Invested in Bitcoin cryptocurrency, embracing decentralized finance and growth potential.</p>
+           </div>
+        </div>          
+        <div class="asset-item" role="article" aria-label="Binance asset">
+          <svg class="asset-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false" fill="#f3ba2f" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 1L15.636 8.727 24 16.455 32.364 8.727zM33.535 13.536L24 23.082 14.465 13.536 10.91 17.09 24 30.18l13.09-13.09zM6.364 15.636L3 19l21 21 21-21-3.364-3.364L24 35.455z"/>
+          </svg>
+          <div class="asset-content">
+            <h4>Binance</h4>
+            <p>Assets held on Binance platform including various cryptocurrencies and trading activity.</p>
+          </div>
+        </div>
+        <div class="asset-item" role="article" aria-label="Treasury gold investment asset">
+          <svg class="asset-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" fill="#d4af37" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="30" stroke="#bfa732" stroke-width="3" fill="none"/>
+            <path d="M16 24h32v16H16z" fill="#d4af37"/>
+            <path d="M16 24l12 8-12 8z" fill="#bfa732"/>
+            <path d="M48 24l-12 8 12 8z" fill="#bfa732"/>
+          </svg>
+          <div class="asset-content">
+            <h4>Treasury (Gold)</h4>
+            <p>Invested in gold as a treasury asset for long-term stable value and wealth preservation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="project" tabindex="0" aria-label="Projects">
+      <h3>Projects</h3>
+      <div class="project-list">
+        <div class="project-item" role="article" aria-label="Project: Portfolio Website">
+          <h4>Personal Portfolio Website</h4>
+          <p>Developed a responsive and animated portfolio website showcasing skills and projects.</p>
+        </div>
+        <div class="project-item" role="article" aria-label="Project: Crypto Tracker App">
+          <h4>Landing Page Website</h4>
+          <p>Developed a responsive and animated landing page website.</p>
+        </div>
+        <div class="project-item" role="article" aria-label="Project: Investment Analysis Tool">
+          <h4>Software Engineer</h4>
+          <p>Software Engineer with hands-on experience in developing full-stack applications using JavaScript (Node.js, React), RESTful APIs, and relational databases. Familiar with Git-based workflows and Agile methodologies.</p>
+        </div>
+        <div class="project-item" role="article" aria-label="Project: Investment Analysis Tool">
+          <h4>Game Developing</h4>
+          <p>I'm a SA-MP Developer who enjoys creating immersive and dynamic roleplay systems. From custom TextDraw UIs to complex database-driven features, I aim to deliver a smooth and fun gameplay experience for players.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" tabindex="0" aria-label="Contact">
+      <h3>Contact Me</h3>
+      <div class="contact-list">
+        <a class="contact-item" href="mailto:justhanz858@gmail.com" aria-label="Send email to Raihan Ramadhani">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M2 4a2 2 0 012-2h16a2 2 0 012 2v16a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm2 0v.01L12 13l8-8V4H4zm16 2.671l-8.01 8.011-8-8V20h16V6.671z" />
+          </svg>
+          justhanz858@gmail.com
+        </a>
+        <a class="contact-item" href="https://wa.me/6281399952795" target="_blank" rel="noopener" aria-label="Contact Raihan Ramadhani on WhatsApp">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M20.52 3.48A11.937 11.937 0 0012 0C5.373 0 0 5.373 0 12a11.95 11.95 0 001.691 6.005L0 24l6.17-1.6A11.951 11.951 0 0012 24c6.627 0 12-5.373 12-12 0-3.201-1.247-6.204-3.48-8.52zM12 22.275a10.2 10.2 0 01-5.422-1.587l-.38-.237-3.67.949.96-3.58-.247-.38A10.227 10.227 0 011.738 12 10.25 10.25 0 1122.275 12 10.202 10.202 0 0112 22.275zm5.313-7.06c-.201-.101-1.187-.586-1.37-.652-.18-.066-.311-.101-.44.1-.126.2-.488.652-.6.785-.11.126-.22.141-.406.046-.184-.101-.776-.287-1.48-.91-.547-.486-.915-1.086-1.02-1.286-.106-.2-.011-.307.09-.406.094-.095.2-.246.299-.37.103-.123.136-.204.205-.34.066-.135.033-.251-.017-.352-.05-.101-.44-1.063-.602-1.455-.158-.384-.32-.332-.44-.338l-.378-.007c-.126 0-.33.047-.503.227-.17.178-.65.635-.65 1.55 0 .914.666 1.8.758 1.926.095.12 1.31 2.04 3.17 2.86.444.19.79.304 1.06.39.446.138.85.118 1.172.072.357-.055 1.187-.484 1.356-.95.17-.466.17-.865.12-.95-.05-.086-.18-.135-.38-.237z"/>
+          </svg>
+          +62 813-9995-2795
+        </a>
+        <a class="contact-item" href="https://instagram.com/hanz_xyz14" target="_blank" rel="noopener" aria-label="Visit Raihan Ramadhani Instagram Profile">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm8.5 1.5h-8.5a4.25 4.25 0 00-4.25 4.25v8.5a4.25 4.25 0 004.25 4.25h8.5a4.25 4.25 0 004.25-4.25v-8.5a4.25 4.25 0 00-4.25-4.25zm-4.25 3.25a5.25 5.25 0 110 10.5 5.25 5.25 0 010-10.5zm0 1.5a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5zm5.55-.25a1.05 1.05 0 110 2.1 1.05 1.05 0 010-2.1z"/>
+          </svg>
+          @hanz_xyz14
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2024 Raihan Ramadhani. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>
+
